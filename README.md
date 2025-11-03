@@ -18,9 +18,8 @@ UTC+8 · English / Chinese(Simplified/Traditional)
 
 ### 🐍 动态贡献图 | Contribution Snake
 
-![GitHub Snake Light](https://raw.githubusercontent.com/AChCyano/AChCyano/output/github-contribution-grid-snake.svg#gh-light-mode-only)
-![GitHub Snake Dark](https://raw.githubusercontent.com/AChCyano/AChCyano/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)
-
+![GitHub Snake Light](github-contribution-grid-snake.svg#gh-light-mode-only)
+![GitHub Snake Dark](github-contribution-grid-snake-dark.svg#gh-dark-mode-only)
 
 <!--
 **achcyano/achcyano** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
