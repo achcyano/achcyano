@@ -7,6 +7,7 @@ UTC+8 · English / Chinese(Simplified/Traditional)
 - 💬 You can call me **曦** in Chinese,or **AChCyano** in English.
 - 🌱 I’m currently studying Computer Science as a freshman.
 - 🔭 I’m currently working on Android develop, Stable Diffusion, UE, CTF and so on.
+- 👉 [Click here to see my blog.](https://achcyano.github.io)
 
 ### 📊 GitHub 统计数据 | GitHub Metrics
 
