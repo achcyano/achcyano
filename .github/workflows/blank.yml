@@ -1,19 +1,16 @@
 name: GitHub Metrics and Snake Animation
 
 on:
-  # 定时任务
+  # 最短支持为每 5 分钟
   schedule:
-    - cron: "0 0 * * *"      # 每小时执行 Metrics & Icons
-  # 手动触发
-  workflow_dispatch:
-  # 推送触发
-  push:
+    - cron: "*/5 * * * *"    # 每 5 分钟执行一次（UTC）
+  workflow_dispatch:        # 仍保留手动触发
+  push:                  # 推送触发
     branches:
       - master
       - main
-
+  
 jobs:
-  # === 1️⃣ 主指标卡片 ===
   github-metrics:
     runs-on: ubuntu-latest
     environment:
@@ -29,10 +26,8 @@ jobs:
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Shanghai
-          # 输出路径（放在项目根目录）
           filename: metrics.svg
 
-  # === 2️⃣ 主题图标卡片 ===
   icons:
     runs-on: ubuntu-latest
     needs: github-metrics
@@ -49,7 +44,6 @@ jobs:
           plugin_topics_mode: icons
           filename: metrics.plugin.topics.icons.svg
 
-  # === 3️⃣ 贡献图动画（Snake） ===
   snake:
     runs-on: ubuntu-latest
     needs: [github-metrics, icons]
@@ -76,5 +70,3 @@ jobs:
           git commit -m "chore: update metrics and snake animation [skip ci]" || true
           git pull --rebase origin main || true
           git push || true
-
-
