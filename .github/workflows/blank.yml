@@ -3,8 +3,7 @@ name: GitHub Metrics and Snake Animation
 on:
   # 定时任务
   schedule:
-    - cron: "0 * * * *"      # 每小时执行 Metrics & Icons
-    - cron: "0 */2 * * *"    # 每两小时执行 Snake
+    - cron: "0 0 * * *"      # 每小时执行 Metrics & Icons
   # 手动触发
   workflow_dispatch:
   # 推送触发
