@@ -1,8 +1,13 @@
-name: GitHub Metrics
+name: GitHub Metrics and Snake Animation
+
+# 顶层显式写权限，确保 schedule 触发时 GITHUB_TOKEN 有写入权限
+permissions:
+  contents: write
 
 on:
   schedule:
-    - cron: "0 * * * *"  # 每小时执行
+    - cron: "0 * * * *"
+    - cron: "0 */2 * * *"
   workflow_dispatch:
   push:
     branches:
@@ -17,24 +22,63 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
+      # 如果 lowlighter/metrics 需要一个有写权限的 token，请确保 secrets.METRICS_TOKEN 存在并是 PAT（repo 权限）。
+      # 如果你希望使用内置 GITHUB_TOKEN，可以把 token 改成 ${{ secrets.GITHUB_TOKEN }}（并保证 permissions 已设置为 write）。
       - name: Generate main metrics
         uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.METRICS_TOKEN }}
+          token: ${{ secrets.METRICS_TOKEN }}   # ← 确保该 secret 存在且有足够权限，或改为 ${{ secrets.GITHUB_TOKEN }}
           user: AChCyano
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Asia/Shanghai
-          filename: metrics.svg
 
-      - name: Commit and push metrics.svg
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add metrics.svg
-          git commit -m "chore: update metrics.svg [skip ci]" || true
-          git pull --rebase origin main || true
-          git push || true
+  icons:
+    runs-on: ubuntu-latest
+    needs: github-metrics
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate topic icons
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.topics.icons.svg
+          token: ${{ secrets.GITHUB_TOKEN }}   # 不要用 "NOT_NEEDED" 占位符。若 action 不需要 token，可删除此行
+          base: ""
+          plugin_topics: yes
+          plugin_topics_limit: 0
+          plugin_topics_mode: icons
+
+  snake:
+    runs-on: ubuntu-latest
+    needs: [github-metrics, icons]
+    permissions:
+      contents: write
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate github-contribution-grid-snake.svg
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg
+          # 如果需要传 palette 参数，请参考 Platane/snk 文档，或单独运行一次 action 生成 dark 变体
+
+      - name: Push snake animation to output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          # 使用内置 GITHUB_TOKEN（注意：若 branch protection 阻止，需要使用 PAT）
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
