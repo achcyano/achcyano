@@ -15,7 +15,7 @@ UTC+8 · English / Chinese(Simplified/Traditional)
 
 ### 💡 技术主题与兴趣 | Topics & Skills
 
-![Metrics](metrics.plugin.topics.icons.svg)
+![Metrics](metrics.plugin.topics.svg)
 
 ### 🐍 动态贡献图 | Contribution Snake
 
