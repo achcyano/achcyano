@@ -19,10 +19,13 @@
                             <div class="label" title="JavaScript (JS) is a lightweight interpreted programming language with first-class functions.">javascript</div>
                             <div class="label" title="Java is an object-oriented programming language used mainly for web, desktop, embedded devices and mobile applications.">java</div>
                             <div class="label" title="Android is an operating system built by Google designed for mobile devices.">android</div>
+                            <div class="label" title="React is an open source JavaScript library used for designing user interfaces.">react</div>
                             <div class="label" title="Node.js is a tool for executing JavaScript in a variety of environments.">node.js</div>
                             <div class="label" title="Vue.js is a JavaScript framework for building interactive web applications.">vue.js</div>
+                            <div class="label" title="React Native is a JavaScript mobile framework developed by Facebook.">react native</div>
                             <div class="label" title="Kotlin is a statically typed programming language for multiplatform applications.">kotlin</div>
                             <div class="label" title="Unreal Engine is used to create awesome games, and experiences for PC, mobile, console, VR, and AR.">unreal engine</div>
+                            <div class="label" title="Next.js is an open source React front-end development web framework.">next</div>
                             <div class="label" title="Svelte is a radical new approach to building reactive user interfaces.">svelte</div>
                         </div>
                     </section>
