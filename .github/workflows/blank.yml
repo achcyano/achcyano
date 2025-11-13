@@ -42,7 +42,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Generate topic icons
+      - name: Icons
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.topics.icons.svg
