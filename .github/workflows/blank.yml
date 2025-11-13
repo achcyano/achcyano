@@ -39,6 +39,8 @@ jobs:
   icons:
     runs-on: ubuntu-latest
     needs: github-metrics
+    environment:
+      name: production
     permissions:
       contents: write
     steps:
