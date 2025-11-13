@@ -39,19 +39,14 @@ jobs:
   icons:
     runs-on: ubuntu-latest
     needs: github-metrics
-    environment:
-      name: production
     permissions:
       contents: write
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
       - name: Generate topic icons
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.topics.icons.svg
-          token: ${{ secrets.GITHUB_TOKEN }}   # 不要用 "NOT_NEEDED" 占位符。若 action 不需要 token，可删除此行
+          token: NOT_NEEDED
           base: ""
           plugin_topics: yes
           plugin_topics_limit: 0
