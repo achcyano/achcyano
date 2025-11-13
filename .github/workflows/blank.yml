@@ -49,7 +49,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.topics.icons.svg
-          token: ${{ secrets.METRICS_1 }}   # 不要用 "NOT_NEEDED" 占位符。若 action 不需要 token，可删除此行
+          token: ${{ secrets.METRICS_TOKEN }}   # 不要用 "NOT_NEEDED" 占位符。若 action 不需要 token，可删除此行
           base: ""
           plugin_topics: yes
           plugin_topics_limit: 0
