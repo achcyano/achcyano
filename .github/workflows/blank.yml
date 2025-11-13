@@ -64,10 +64,11 @@ jobs:
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          # --- 修改这里 ---
+          # 为 dark 变体文件添加 ?palette=github-dark
           outputs: |
             dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg
-          # 如果需要传 palette 参数，请参考 Platane/snk 文档，或单独运行一次 action 生成 dark 变体
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
       - name: Push snake animation to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
@@ -75,5 +76,4 @@ jobs:
           target_branch: output
           build_dir: dist
         env:
-          # 使用内置 GITHUB_TOKEN（注意：若 branch protection 阻止，需要使用 PAT）
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
