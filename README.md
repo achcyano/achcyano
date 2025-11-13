@@ -19,6 +19,6 @@ UTC+8 · English / Chinese(Simplified/Traditional)
 
 ### 🐍 动态贡献图 | Contribution Snake
 
-![GitHub Snake Dark](https://raw.githubusercontent.com/achcyano/achcyano/refs/heads/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)
-![GitHub Snake Light](https://raw.githubusercontent.com/achcyano/achcyano/refs/heads/output/github-contribution-grid-snake.svg#gh-light-mode-only)
+<img src="https://github.com/AChCyano/achcyano/blob/output/github-contribution-grid-snake.svg?raw=true#gh-light-mode-only" alt="snake light">
+<img src="https://github.com/AChCyano/achcyano/blob/output/github-contribution-grid-snake-dark.svg?raw=true#gh-dark-mode-only" alt="snake dark">
 
